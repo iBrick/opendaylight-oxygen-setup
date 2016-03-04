@@ -1,4 +1,4 @@
-# odl-setup
+# opendaylight-setup
 This directory contains setup scripts for ODL.
 
 Install these files into a directory (e.g. "ODL").
