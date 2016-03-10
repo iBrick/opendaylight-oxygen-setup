@@ -6,6 +6,5 @@ then
 	exit 1
 fi
 
-echo cisco123 | sudo 
 echo $3 | sudo openconnect -u $2 --passwd-on-stdin https://dcloud-$1-anyconnect.cisco.com &
 

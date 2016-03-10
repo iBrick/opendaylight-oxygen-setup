@@ -41,10 +41,12 @@ Installation Instructions:
    
 11.	If you are using dCloud then set up the VPN using:
 
-	./start-vpn site username password
+	sudo ./start-vpn site username password
 	
 	* site is one of rtp, lon, sng or chi
 	* username and password can be found in your dCloud sssion details
+
+	(note that your unix account will need sudo privileges)
 
 12.	Start ODL using
 
