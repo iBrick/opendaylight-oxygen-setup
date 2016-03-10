@@ -5,11 +5,11 @@ Installation Instructions:
 
 1.  Clone this repo:
 
-  "git clone https://github.com/CiscoDevNet/opendaylight-setup.git ODL"
+  git clone https://github.com/CiscoDevNet/opendaylight-setup.git ODL
 
 2.  Within the ODL directory create an "images" subdirectory:
 
-  cd ODL
+  cd ODL<br>
   mkdir images
  
   So you will now have 2 subdirectories:
@@ -24,27 +24,52 @@ Installation Instructions:
   wget -P images https://nexus.opendaylight.org/content/groups/public/org/opendaylight/integration/distribution-karaf/0.3.3-Lithium-SR3/distribution-karaf-0.3.3-Lithium-SR3.tar.gz
 
 5.  Under the "ODL" directory, edit the "distro" file to reflect the release you just downloaded into the "images" directory.
-
-6.  If you are *not* using the DCloud infrastructure (http://dcloud.cisco.com) to experiment with ODL, edit the "nodes" file to reflect the list of nodes and their IP Addresses in your VIRL simulation.
-
-7.  Unpack ODL using
-
-  ./unpack-odl
  
-8. Set up ODL using (this loads key features and logging configs)
+6. Unpack ODL using
+
+	./unpack-odl
+
+7.	If you are *not* using the dCloud infrastructure (http://dcloud.cisco.com) to experiment with ODL, edit the "nodes" file to reflect the list of nodes and their IP Addresses in your VIRL simulation.
+
+8.	Optionally edit the features file to change the set of features installed at ODL startup.
+
+9.	Optionally edit the logs file to change the set of additional logging activated at ODL startup.
+ 
+10. Set up ODL using (this loads key features and logging configs)
 
   ./setup-odl
- 
-9.  Start ODL using
+   
+11.	If you are using dCloud then set up the VPN using:
+
+	./start-vpn site username password
+	
+	* site is one of rtp, lon, sng or chi
+	* username and password can be found in your dCloud sssion details
+
+12.	Start ODL using
 
   ./start-odl
- 
-10. Configure ODL using
+
+13.	Configure ODL using
 
   ./config-odl
   
   (this will connect ODL to the NETCONF nodes and configure BGP-LS/PCE-P - if the features are selected)
   
+The repository also contains a subdirectory "vagrant" which contains a Vagrantfile and bootstrap.sh script.
+
+If you have Vagrant and VirtualBox installed you can do a "vagrant up" from that directory and a VirtualBox VM will be created consisting of:
+
+* Ubuntu 14.04
+* git
+* openconnect
+* python 2.7
+* pyang
+* this repository
+* the latest OpenDaylight 0.4.1-SNAPSHOT image
+
+ODL will be unpacked.  So you can follow the instructions above from step 6.
+
 ### Scripts are:
 
 **unpack-odl** unpacks the .tar.gz file.  Creates a new subdirectory for the ODL distro.
