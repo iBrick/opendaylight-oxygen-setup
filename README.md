@@ -65,6 +65,7 @@ If you have Vagrant and VirtualBox installed you can do a "vagrant up" from that
 * Ubuntu 14.04
 * git
 * openconnect
+* java (JRE only)
 * pip
 * pyang
 * this repository
