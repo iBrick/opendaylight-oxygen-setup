@@ -60,7 +60,7 @@ Installation Instructions:
   
 The repository also contains a subdirectory "vagrant" which contains a Vagrantfile and bootstrap.sh script.
 
-If you have Vagrant and VirtualBox installed you can do a "vagrant up" from that directory and a VirtualBox VM will be created consisting of:
+If you have Vagrant and VirtualBox or VMWare Workstation/Fusion installed you can do a "vagrant up" from that directory and a VirtualBox VM will be created consisting of:
 
 * Ubuntu 14.04
 * git
@@ -72,6 +72,8 @@ If you have Vagrant and VirtualBox installed you can do a "vagrant up" from that
 * the latest OpenDaylight 0.4.1-SNAPSHOT image
 
 ODL will be unpacked.  So you can follow the instructions above from step 6.
+
+Note that the Vagrantfile is currently configured to allocate 2 vCPUs and 8GB of RAM to the VM.   If your machine only has 8GB of RAM then you may wish to allocate 4GB of RAM.  Likewise if you only have 2 CPU cores you may wish to allocate 1 vCPU.   Equally if you want to use a different hypervisor you will need to edit the Vagrantfile.
 
 ### Scripts are:
 
