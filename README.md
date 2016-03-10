@@ -63,7 +63,7 @@ If you have Vagrant and VirtualBox installed you can do a "vagrant up" from that
 * Ubuntu 14.04
 * git
 * openconnect
-* python 2.7
+* pip
 * pyang
 * this repository
 * the latest OpenDaylight 0.4.1-SNAPSHOT image
