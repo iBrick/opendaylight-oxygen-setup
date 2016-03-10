@@ -3,9 +3,11 @@ This directory contains setup scripts for ODL.
 
 Installation Instructions:
 
-1.  Clone this repo using "git clone https://github.com/CiscoDevNet/opendaylight-setup.git ODL"
+1.  Clone this repo:
 
-2.  Within the ODL directory create an "images" subdirectory. 
+  "git clone https://github.com/CiscoDevNet/opendaylight-setup.git ODL"
+
+2.  Within the ODL directory create an "images" subdirectory:
 
   cd ODL
   mkdir images
@@ -23,9 +25,9 @@ Installation Instructions:
 
 5.  Under the "ODL" directory, edit the "distro" file to reflect the release you just downloaded into the "images" directory.
 
-6.    If you are *not* using the DCloud infrastructure (http://dcloud.cisco.com) to experiment with ODL, edit the "nodes" file to reflect the list of nodes and their IP Addresses in your VIRL simulation.
+6.  If you are *not* using the DCloud infrastructure (http://dcloud.cisco.com) to experiment with ODL, edit the "nodes" file to reflect the list of nodes and their IP Addresses in your VIRL simulation.
 
-7.    Unpack ODL using
+7.  Unpack ODL using
 
   ./unpack-odl
  
@@ -33,7 +35,7 @@ Installation Instructions:
 
   ./setup-odl
  
-9. Start ODL using
+9.  Start ODL using
 
   ./start-odl
  
