@@ -54,10 +54,6 @@ request_template = '''
                 {
                     "type": "odl-bgp-rib-impl-cfg:bgp-table-type",
                     "name": "linkstate"
-                },
-                {
-                    "type": "odl-bgp-rib-impl-cfg:bgp-table-type",
-                    "name": "flowspec"
                 }
             ],
             "odl-bgp-rib-impl-cfg:data-provider": {

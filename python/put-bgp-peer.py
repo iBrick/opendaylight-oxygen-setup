@@ -33,10 +33,6 @@ request_template = '''
                 },
                 {
                     "type": "odl-bgp-rib-impl-cfg:bgp-table-type",
-                    "name": "flowspec"
-                },
-                {
-                    "type": "odl-bgp-rib-impl-cfg:bgp-table-type",
                     "name": "ipv4-unicast"
                 }
             ]
