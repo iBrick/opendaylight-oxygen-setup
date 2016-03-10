@@ -50,7 +50,7 @@ Installation Instructions:
 
 12.	Start ODL using
 
-  ./start-odl
+  ./start-odl interface (e.g. tun0, eth0)
 
 13.	Configure ODL using
 
