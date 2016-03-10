@@ -50,11 +50,11 @@ Installation Instructions:
 
 12.	Start ODL using
 
-  ./start-odl interface (e.g. tun0, eth0)
+  ./start-odl
 
 13.	Configure ODL using
 
-  ./config-odl
+  ./config-odl interface (e.g. tun0, eth0)
   
   (this will connect ODL to the NETCONF nodes and configure BGP-LS/PCE-P - if the features are selected)
   

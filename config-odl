@@ -1,16 +1,13 @@
 #!/bin/bash
 
-ip=$(/sbin/ifconfig tun0 | grep 'inet addr': | cut -d: -f2 | cut -d" " -f1)
-
-if [ $ip ]
+if [ $# != 1 ]
 then
-	echo "using VPN"
-	dcloud=true
-else
-	echo "using Ethernet"
-	ip=$(/sbin/ifconfig eth0 | grep 'inet addr': | cut -d: -f2 | cut -d" " -f1)
+        echo "usage $0 interface"
+        exit 1
 fi
-	
+
+ip=$(/sbin/ifconfig $1 | grep 'inet addr': | cut -d: -f2 | cut -d" " -f1)
+
 echo $ip
 
 if grep -q "odl-netconf" features;
