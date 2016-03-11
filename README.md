@@ -66,6 +66,7 @@ If you have Vagrant and VirtualBox or VMWare Workstation/Fusion installed you ca
 * git
 * openconnect
 * java (JRE only)
+* mininet
 * pip
 * pyang
 * this repository
