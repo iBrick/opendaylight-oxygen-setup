@@ -10,7 +10,7 @@ ip=$(/sbin/ifconfig $1 | grep 'inet addr': | cut -d: -f2 | cut -d" " -f1)
 
 echo $ip
 
-if grep -q "odl-netconf" features;
+if grep -q "odl-netconf-all" features;
 then
 	echo "mounting netconf nodes"
 	while read -r line
@@ -43,7 +43,7 @@ then
 	# configure app peer	
 	python/put-app-rib.py $ip 1.2.3.4 
 
-	if grep -q "odl-netconf" features;
+	if grep -q "odl-netconf-all" features;
 	then
 		if $dcloud;
 		then	
