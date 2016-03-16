@@ -23,7 +23,7 @@ Installation Instructions:
 
   wget -P images https://nexus.opendaylight.org/content/groups/public/org/opendaylight/integration/distribution-karaf/0.3.3-Lithium-SR3/distribution-karaf-0.3.3-Lithium-SR3.tar.gz
 
-5.  Under the "ODL" directory, edit the "distro" file to reflect the release you just downloaded into the "images" directory.
+5.  Under the "ODL" directory, edit the DISTRO variable in the "parameters" file to reflect the release you just downloaded into the "images" directory.
  
 6. Unpack ODL using
 
@@ -31,15 +31,17 @@ Installation Instructions:
 
 7.	If you are *not* using the dCloud infrastructure (http://dcloud.cisco.com) to experiment with ODL, edit the "nodes" file to reflect the list of nodes and their IP Addresses in your VIRL simulation.
 
-8.	Optionally edit the features file to change the set of features installed at ODL startup.
+8. If you are *not* using dCloud and if you plan to use BGP, edit the parameters file to change the IP address of the BGP speaker.
 
-9.	Optionally edit the logs file to change the set of additional logging activated at ODL startup.
+9.	Optionally edit the parameters file to change the set of features installed at ODL startup.
+
+10.	Optionally edit the logs file to change the set of additional logging activated at ODL startup.
  
-10. Set up ODL using (this loads key features and logging configs)
+11. Set up ODL using (this loads key features and logging configs)
 
   ./setup-odl
    
-11.	If you are using dCloud then set up the VPN using:
+12.	If you are using dCloud then set up the VPN using:
 
 	sudo ./start-vpn site username password
 	
@@ -48,11 +50,11 @@ Installation Instructions:
 
 	(note that your unix account will need sudo privileges)
 
-12.	Start ODL using
+13.	Start ODL using
 
   ./start-odl
 
-13.	Configure ODL using
+14.	Configure ODL using
 
   ./config-odl interface (e.g. tun0, eth0)
   
