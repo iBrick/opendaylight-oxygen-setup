@@ -1,6 +1,6 @@
 #!/bin/bash
 
-DISTRO=$(<distro)
+source ./parameters
 
 mkdir -p $DISTRO/etc/opendaylight/karaf
 
@@ -11,10 +11,5 @@ then
 	cat logs >> $DISTRO/etc/org.ops4j.pax.logging.cfg 	
 
 	# add features
-	while read -r line
-	do
-		feature=$(echo $line)
-		echo $feature
-		sed -i '/^featuresBoot=/ s/$/,'$feature'/' $DISTRO/etc/org.apache.karaf.features.cfg
-	done < features	
+	sed -i '/^featuresBoot=/ s/$/,'$FEATURES'/' $DISTRO/etc/org.apache.karaf.features.cfg
 fi

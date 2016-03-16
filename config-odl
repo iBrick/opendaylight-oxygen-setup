@@ -1,5 +1,7 @@
 #!/bin/bash
 
+source ./parameters
+
 if [ $# != 1 ]
 then
         echo "usage $0 interface"
@@ -10,7 +12,8 @@ ip=$(/sbin/ifconfig $1 | grep 'inet addr': | cut -d: -f2 | cut -d" " -f1)
 
 echo $ip
 
-if grep -q "odl-netconf-all" features;
+awk -v features=$FEATURES 'BEGIN { exit index(features, "odl-netconf-all") }'
+if [ "$?" != "0" ];
 then
 	echo "mounting netconf nodes"
 	while read -r line
@@ -34,7 +37,8 @@ then
 	done < nodes
 fi
 
-if grep -q "odl-bgpcep-bgp" features;
+awk -v features=$FEATURES 'BEGIN { exit index(features, "odl-bgpcep-bgp") }'
+if [ "$?" != "0" ];
 then
 	echo "configuring BGP"
 	# configure BGP RIB
@@ -52,10 +56,11 @@ then
 	fi
 
 	# configure ODL to talk to BGP peer
-	python/put-bgp-peer.py $ip $addr
+	python/put-bgp-peer.py $ip $BGP_PEER
 fi
 
-if grep -q "odl-bgpcep-pcep" features;
+awk -v features=$FEATURES 'BEGIN { exit index(features, "odl-bgpcep-pcep") }'
+if [ "$?" != "0" ];
 then
 	if $dcloud;
 	then

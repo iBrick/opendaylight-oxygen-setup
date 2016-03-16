@@ -1,5 +1,5 @@
 #!/bin/bash
-DISTRO=$(<distro)
+source ./parameters
 echo $DISTRO
 $DISTRO/bin/stop
 

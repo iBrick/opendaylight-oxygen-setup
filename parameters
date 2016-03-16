@@ -1,0 +1,3 @@
+DISTRO=distribution-karaf-0.3.3-Lithium-SR3
+BGP_PEER=198.18.1.37
+FEATURES=odl-dlux-all,odl-restconf-all,odl-netconf-all,odl-bgpcep-bgp-all,odl-bgpcep-pcep-all,odl-netconf-connector-all

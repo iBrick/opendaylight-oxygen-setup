@@ -1,6 +1,6 @@
 #!/bin/bash
 
-DISTRO=$(<distro)
+source ./parameters
 rm -rf $DISTRO/data
 rm -rf $DISTRO/etc/opendaylight/current
 rm -rf $DISTRO/cache

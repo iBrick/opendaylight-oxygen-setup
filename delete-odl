@@ -1,3 +1,3 @@
 #!/bin/bash
-DISTRO=$(<distro)
+source ./parameters
 rm -rf $DISTRO
