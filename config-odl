@@ -43,13 +43,12 @@ then
 	# configure app peer	
 	python/put-app-rib.py $ip 1.2.3.4 
 
-	if grep -q "odl-netconf-all" features;
-	then
-		if $dcloud;
-		then	
-			# configure BGP peer to talk to ODL
-			python/put-bgp-neighbor.py $ip $name 
-		fi
+	if $dcloud;
+	then	
+		echo "configuring BGP peer"
+		req='{"request": [{"option": "addBGP", "bgp_ip":"'$ip'"}]}'
+		echo $req
+		echo $req | curl -s -X POST http://198.18.133.1:8010/virl_client -H "Content-Type: application/json" -d @-
 	fi
 
 	# configure ODL to talk to BGP peer
