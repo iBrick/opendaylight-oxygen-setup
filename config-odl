@@ -53,6 +53,7 @@ then
 		req='{"request": [{"option": "addBGP", "bgp_ip":"'$ip'"}]}'
 		echo $req
 		echo $req | curl -s -X POST http://198.18.133.1:8010/virl_client -H "Content-Type: application/json" -d @-
+		echo
 	fi
 
 	# configure ODL to talk to BGP peer
@@ -68,5 +69,6 @@ then
 		req='{"request": [{"option": "addPCEP", "pcep_ip":"'$ip'"}]}'
 		echo $req
 		echo $req | curl -s -X POST http://198.18.133.1:8010/virl_client -H "Content-Type: application/json" -d @-
+		echo
 	fi
 fi 
