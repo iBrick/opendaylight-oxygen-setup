@@ -66,6 +66,7 @@ If you have Vagrant and VirtualBox or VMWare Workstation/Fusion installed you ca
 
 * Ubuntu 14.04
 * git
+* zip
 * openconnect
 * java (JRE only)
 * mininet
