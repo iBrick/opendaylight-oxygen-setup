@@ -2,6 +2,7 @@
 
 apt-get -qq update
 echo Y | apt-get -qq install git
+echo Y | apt-get -qq install zip 
 echo Y | apt-get -qq install openconnect
 echo Y | apt-get -qq install default-jre
 echo Y | apt-get -qq install mininet
