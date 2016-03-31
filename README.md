@@ -73,7 +73,7 @@ If you have Vagrant and VirtualBox or VMWare Workstation/Fusion installed you ca
 * pip
 * pyang
 * this repository
-* the latest OpenDaylight 0.4.1-SNAPSHOT image
+* OpenDaylight Beryllium SR1
 
 ODL will be unpacked.  So you can follow the instructions above from step 6.
 
@@ -118,7 +118,7 @@ Note that the Vagrantfile is currently configured to allocate 2 vCPUs and 8GB of
 
 **logs** extra logs to activate
 
-**nodes** list of NETCONF nodes to mount
+**nodes** list of NETCONF nodes to mount (each line consists of a node name and node IP address)
 
 ### Python scripts are:
 
@@ -130,4 +130,4 @@ Note that the Vagrantfile is currently configured to allocate 2 vCPUs and 8GB of
 
 **put-app-rib.py** configures the ODL App RIB
 
-**put-bgp-peer.py** configures ODL's BGP peer (e.g. XR)
+**put-bgp-peer.py** configures a BGP peer in ODL
