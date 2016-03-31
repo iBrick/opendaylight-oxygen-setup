@@ -43,7 +43,7 @@ if [ "$?" != "0" ];
 then
 	echo "configuring BGP"
 	# configure BGP RIB
-	python python/put-bgp-rib.py $ip 65504
+	python python/put-bgp-rib.py $ip $LOCAL_AS 
 
 	# configure app peer
 	python python/put-app-rib.py $ip 1.2.3.4

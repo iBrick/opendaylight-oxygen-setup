@@ -64,7 +64,7 @@ request_template = '''
         "type": "opendaylight-md-sal-binding:binding-codec-tree-factory",
         "name": "runtime-mapping-singleton"
       },
-      "odl-bgp-rib-impl-cfg:local-as": %d
+      "odl-bgp-rib-impl-cfg:local-as": %s
     }
   ]
 }
