@@ -48,7 +48,7 @@ then
 	# configure app peer
 	python python/put-app-rib.py $ip 1.2.3.4
 
-	if $dcloud;
+	if [ $DCLOUD = "YES" ];
 	then
 		echo "configuring BGP peer"
 		req='{"request": [{"option": "addBGP", "bgp_ip":"'$ip'"}]}'
@@ -64,7 +64,7 @@ fi
 awk -v features=$FEATURES 'BEGIN { exit index(features, "odl-bgpcep-pcep") }'
 if [ "$?" != "0" ];
 then
-	if $dcloud;
+	if [ $DCLOUD = "YES" ];
 	then
 		echo "configuring PCE-P"
 		req='{"request": [{"option": "addPCEP", "pcep_ip":"'$ip'"}]}'

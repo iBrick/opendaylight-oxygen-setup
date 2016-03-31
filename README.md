@@ -114,6 +114,7 @@ Note that the Vagrantfile is currently configured to allocate 2 vCPUs and 8GB of
 * NETCONF_PORT
 * NETCONF_USER
 * NETCONF_PASS
+* DCLOUD (YES or NO)
 * FEATURES (list of features to add to ODL's default set)
 
 **logs** extra logs to activate
