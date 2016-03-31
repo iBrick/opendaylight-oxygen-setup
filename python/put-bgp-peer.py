@@ -76,6 +76,6 @@ url = 'http://' + sys.argv[1] + ':8181' + \
       '/config:modules/module/odl-bgp-rib-impl-cfg:bgp-peer/example-bgp-peer'
 
 resp = requests.put(url, data=req_body, headers=req_hdrs,
-                    auth=(odl_user, odl_pass)
+                    auth=(odl_user, odl_pass))
 
 print resp
