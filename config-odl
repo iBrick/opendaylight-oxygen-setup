@@ -20,12 +20,13 @@ then
 	do
 		addr=$(echo $line | cut -f1 -d" ")
 		name=$(echo $line | cut -f2 -d" ")
-		python python/put-node.py localhost $addr $name
+		echo $name $addr
+		python python/put-node.py localhost $addr $name $NETCONF_PORT $NETCONF_USER $NETCONF_PASS
 		sleep 2
 
 		while true;
 		do
-    	python python/is-node-connected.py $ip $name
+			python python/is-node-connected.py $ip $name
 	  	if [ $? -eq 0 ]
       then
       	echo "NETCONF node $name up"
