@@ -20,19 +20,19 @@ then
 	do
 		addr=$(echo $line | cut -f1 -d" ")
 		name=$(echo $line | cut -f2 -d" ")
-		python/put-node.py localhost $addr $name
+		python python/put-node.py localhost $addr $name
 		sleep 2
 
 		while true;
 		do
-      	  		python/is-node-connected.py $ip $name 
-	        	if [ $? -eq 0 ]
-        		then
-                		echo "NETCONF node $name up"
-                		break
-        		else
-                		sleep 2
-        		fi
+    	python python/is-node-connected.py $ip $name
+	  	if [ $? -eq 0 ]
+      then
+      	echo "NETCONF node $name up"
+        break
+      else
+      	sleep 2
+      fi
 		done
 	done < nodes
 fi
@@ -42,13 +42,13 @@ if [ "$?" != "0" ];
 then
 	echo "configuring BGP"
 	# configure BGP RIB
-	python/put-bgp-rib.py $ip
-	
-	# configure app peer	
-	python/put-app-rib.py $ip 1.2.3.4 
+	python python/put-bgp-rib.py $ip 65504
+
+	# configure app peer
+	python python/put-app-rib.py $ip 1.2.3.4
 
 	if $dcloud;
-	then	
+	then
 		echo "configuring BGP peer"
 		req='{"request": [{"option": "addBGP", "bgp_ip":"'$ip'"}]}'
 		echo $req
@@ -57,7 +57,7 @@ then
 	fi
 
 	# configure ODL to talk to BGP peer
-	python/put-bgp-peer.py $ip $BGP_PEER
+	python python/put-bgp-peer.py $ip $BGP_PEER $LOCAL_AS $REMOTE_AS
 fi
 
 awk -v features=$FEATURES 'BEGIN { exit index(features, "odl-bgpcep-pcep") }'
@@ -71,4 +71,4 @@ then
 		echo $req | curl -s -X POST http://198.18.133.1:8010/virl_client -H "Content-Type: application/json" -d @-
 		echo
 	fi
-fi 
+fi

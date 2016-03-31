@@ -97,19 +97,28 @@ Note that the Vagrantfile is currently configured to allocate 2 vCPUs and 8GB of
 
 **stop-odl** stops ODL
 
-**config-odl** sets up NETCONF nodes, BGP neighbor etc. - uses scripts from the python subdirectory
+**config-odl** sets up NETCONF nodes, BGP etc. - uses scripts from the python subdirectory (plus in the dCloud case REST calls to dCloud APIs)
 
 **delete-odl** deletes the ODL distribution
 
 ### Additional files are:
 
-**distro** distribution to run
+**parameters** parameters - encoded as environment vars:
 
-**features** list of features to run
+* DISTRO
+* BGP_PEER
+* LOCAL_AS
+* REMOTE_AS
+* ODL_USER
+* ODL_PASS
+* NETCONF_PORT
+* NETCONF_USER
+* NETCONF_PASS
+* FEATURES (list of features to add to ODL's default set)
 
-**logs** extra logs to run
+**logs** extra logs to activate
 
-**nodes** list of NETCONF nodes.  Last node in the list is the BGP neighbor.
+**nodes** list of NETCONF nodes to mount
 
 ### Python scripts are:
 
@@ -121,6 +130,4 @@ Note that the Vagrantfile is currently configured to allocate 2 vCPUs and 8GB of
 
 **put-app-rib.py** configures the ODL App RIB
 
-**put-bgp-peer.py** configures ODL's BGP peer (XR)
-
-**put-bgp-neighbor.py** configures XR with ODL as a BGP peer
+**put-bgp-peer.py** configures ODL's BGP peer (e.g. XR)
