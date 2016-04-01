@@ -1,6 +1,7 @@
 # opendaylight-setup
 This directory contains setup scripts for ODL.
 
+Start with a Linux host or VM with git and java installed (at a minimum - ideally mininet, openconnect, pip, pyang etc. too, depending on what features you plan to test).
 Installation Instructions:
 
 1.  Clone this repo:
@@ -46,7 +47,7 @@ Installation Instructions:
 	sudo ./start-vpn site username password
 	
 	* site is one of rtp, lon, sng or chi
-	* username and password can be found in your dCloud sssion details
+	* username and password can be found in your dCloud session details
 
 	(note that your unix account will need sudo privileges)
 
