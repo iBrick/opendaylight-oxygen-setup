@@ -50,11 +50,18 @@ then
 
 	if [ $DCLOUD = "YES" ];
 	then
-		echo "configuring BGP peer"
+		echo "configuring BGP peer using REST"
 		req='{"request": [{"option": "addBGP", "bgp_ip":"'$ip'"}]}'
 		echo $req
 		echo $req | curl -s -X POST http://198.18.133.1:8010/virl_client -H "Content-Type: application/json" -d @-
 		echo
+	elif [ $1 = "tun0" ];
+	then
+		echo "configuring BGP peer using NETCONF"
+		python python/put-bgp-neighbor.py $ip $BGP_NODE $LOCAL_AS $REMOTE_AS
+
+		echo "adding static route to peer using NETCONF"
+		# python python/put-static-route.py $ip $BGP_NODE $ip 32 $BGP_NEXT_HOP 
 	fi
 
 	# configure ODL to talk to BGP peer
