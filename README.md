@@ -105,8 +105,10 @@ Note that the Vagrantfile is currently configured to allocate 2 vCPUs and 8GB of
 
 **parameters** parameters - encoded as environment vars:
 
-* DISTRO
-* BGP_PEER
+* DISTRO (name of ODL distribution)
+* BGP_PEER (IP address of BGP peer)
+* BGP_NODE (NETCONF name of BGP peer)
+* BGP\_NEXT_HOP (next-hop from BGP peer towards ODL)
 * LOCAL_AS
 * REMOTE_AS
 * ODL_USER
