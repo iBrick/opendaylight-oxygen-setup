@@ -14,7 +14,7 @@ cd ODL
 mkdir images
 cd images
 echo "downloading ODL distro"
-wget -q -i https://nexus.opendaylight.org/content/repositories/opendaylight.release/org/opendaylight/integration/distribution-karaf/0.4.1-Beryllium-SR1/ 
+wget -q https://nexus.opendaylight.org/content/repositories/opendaylight.release/org/opendaylight/integration/distribution-karaf/0.4.1-Beryllium-SR1/ 
 cd ..
 echo "unpacking ODL distro"
 ./unpack-odl 
