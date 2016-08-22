@@ -5,7 +5,7 @@ This directory contains setup scripts for a 5 node XRv topology.
 
 **XRstart** runs all 5 XR nodes in the correct order.  Calls XRe, XRd, XRc, XRb and XRa.
 
-**XRstop.py** kills all 5 XR nodes by finding kvm/qemu processes.  Requires python - but will rewrite this one in bash.
+**XRstop** kills all 5 XR nodes by finding kvm/qemu processes.
 
 **XRloader.exp** used to initialise an XR node.  Takes 3 parameters:
 
