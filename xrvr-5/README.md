@@ -13,6 +13,8 @@ This directory contains setup scripts for a 5 node XRv topology.
 2. management IP address
 3. virtual serial port
 
+additional variables for username, password, management subnet mask etc. are inline in the script
+
 ### Additional files are:
 
 **XRa to XRe** QEMU/KVM start scripts for XR
