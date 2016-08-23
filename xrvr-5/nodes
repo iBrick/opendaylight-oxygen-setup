@@ -1,5 +1,3 @@
-# list of nodes to start
-# each line is management IP then hostname
 172.23.29.116	xrvr-a
 172.23.29.117	xrvr-b
 172.23.29.118	xrvr-c
