@@ -7,6 +7,8 @@ This directory contains setup scripts for a 5 node XRv topology.
 
 **XRstop.sh** kills all 5 XR nodes by finding kvm/qemu processes.
 
+**XRsetup.sh** sets up all 5 XR nodes
+
 **XRloader.exp** used to initialise an XR node.  Takes 3 parameters:
 
 1. hostname
