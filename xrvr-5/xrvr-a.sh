@@ -1,5 +1,5 @@
 sudo qemu-system-x86_64 -daemonize -display none -enable-kvm -machine accel=kvm -smp cores=2 -m 4096 \
-  -hda ./XRa.vmdk \
+  -hda ./xrvr-a.vmdk \
   -serial telnet::9101,server,nowait -serial telnet::9102,server,nowait \
   -net nic,model=virtio,vlan=0,macaddr=00:22:00:ff:0A:00 -net tap,vlan=0,script=/etc/qemu-ifup \
   -net nic,model=virtio,vlan=1,macaddr=00:22:00:ff:0A:01 -net socket,vlan=1,listen=127.0.0.1:14000 \
