@@ -3,9 +3,9 @@ This directory contains setup scripts for a 5 node XRv topology.
 
 ### Key scripts are:
 
-**XRstart** runs all 5 XR nodes in the correct order.  Calls XRe, XRd, XRc, XRb and XRa.
+**XRstart.sh** runs all 5 XR nodes in the correct order.  Calls xrvr-e.sh, xrvr-d.sh, xrvr-c.sh, xrvr-b.sh and xrvr-a.sh
 
-**XRstop** kills all 5 XR nodes by finding kvm/qemu processes.
+**XRstop.sh** kills all 5 XR nodes by finding kvm/qemu processes.
 
 **XRloader.exp** used to initialise an XR node.  Takes 3 parameters:
 
@@ -19,9 +19,9 @@ the script is written in expect so that will be required on your server.
 
 ### Additional files are:
 
-**XRa to XRe** QEMU/KVM start scripts for XR
+**xrvr-a.sh to xrvr-e.sh** QEMU/KVM start scripts for XR
 
-**xrvr-a to xrvr-e** Initial configs for the 5 nodes
+**xrvr-a.config to xrvr-e.config** Initial configs for the 5 nodes
 
 **nodes** list of hostnames and IP addresses (for use with scripts in next directory up)
 
