@@ -1,7 +1,17 @@
 # xrvr-5
 This directory contains setup scripts for a 5 node XRv topology. 
 
+First you run ./XRcopy.sh to copy your XR image to 5 files called e.g. xrvr-a.vmdk, xrvr-b.vmdk.  (modify this script if not using .vmdks).
+
+Then run ./XRstart.sh and then ./XRsetup.sh to initialise the nodes.
+
+Once the nodes are up and configured you can point ODL at them (use the scripts in the directory one up from this, but with the parameters and nodes files in this directory).
+
+On subsequent launches you only need ./XRstart.sh.
+
 ### Key scripts are:
+
+**XRcopy.sh** copies the XR image once for each node (e.g. to xrvr-a.vmdk).
 
 **XRstart.sh** runs all XR nodes in the correct order.  Calls xrvr-a.sh etc.
 
@@ -21,12 +31,14 @@ the script is written in expect so that will be required on your server.
 
 ### Additional files are:
 
-**xrvr-a.sh to xrvr-e.sh** QEMU/KVM start scripts for XR
+**xrvr-a.sh to xrvr-e.sh** QEMU/KVM start scripts for XR.   These may need to be modified if not using .vmdks or if your machine setup is different.
 
-**xrvr-a.config to xrvr-e.config** Initial configs for the 5 nodes
+**xrvr-a.config to xrvr-e.config** Initial configs for the 5 nodes.
 
 **nodes** list of hostnames and IP addresses (for use with scripts in this directory and next directory up)
 
 **parameters** parameters (for use with scripts in this director and next directory up)
+
+**topology.pdf** shows the topology of the network.
 
 
