@@ -1,13 +1,16 @@
 # xrvr-5
-This directory contains setup scripts for a 5 node XRv topology. 
 
-First run ./XRget.sh to get the XR image from the repo.
+This directory contains setup scripts for a 5 node XRv topology.
+
+Copy the contents of this directory into the opendaylight-setup directory to get the correct nodes/parameters files and to provide the various scripts.  Then copy the *.config files into your TFTP server directory.
+
+Next run ./XRget.sh to get the XR image from the repo.
 
 Then run ./XRcopy.sh to copy your XR image to 5 files called e.g. xrvr-a.vmdk, xrvr-b.vmdk.  (modify this script if not using .vmdks).
 
 Then run ./XRstart.sh and then ./XRsetup.sh to initialise the nodes.
 
-Once the nodes are up and configured you can point ODL at them (use the scripts in the directory one up from this, but with the parameters and nodes files in this directory).
+Once the nodes are up and configured you can point ODL at them by using the unpack-odl, setup-odl, start-odl and config-odl scripts.
 
 On subsequent launches you only need ./XRstart.sh.
 
@@ -44,9 +47,9 @@ the script is written in expect so that will be required on your server.
 
 **xrvr-a.config to xrvr-e.config** Initial configs for the 5 nodes.
 
-**nodes** list of hostnames and IP addresses (for use with scripts in this directory and next directory up)
+**nodes** list of hostnames and IP addresses
 
-**parameters** parameters (for use with scripts in this director and next directory up)
+**parameters** parameters
 
 **topology.pdf** shows the topology of the network.
 
