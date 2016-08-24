@@ -2,5 +2,7 @@
 
 while read -r line
 do
-	cp $1 ./$(echo $line | cut -f2 -d" ").vmdk
+	name=$(echo $line | cut -f2 -d" ")
+	echo $name
+	cp $1 ./$name.iso
 done < nodes
