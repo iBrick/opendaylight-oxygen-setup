@@ -1,7 +1,9 @@
 # xrvr-5
 This directory contains setup scripts for a 5 node XRv topology. 
 
-First you run ./XRcopy.sh to copy your XR image to 5 files called e.g. xrvr-a.vmdk, xrvr-b.vmdk.  (modify this script if not using .vmdks).
+First run ./XRget.sh to get the XR image from the repo.
+
+Then run ./XRcopy.sh to copy your XR image to 5 files called e.g. xrvr-a.vmdk, xrvr-b.vmdk.  (modify this script if not using .vmdks).
 
 Then run ./XRstart.sh and then ./XRsetup.sh to initialise the nodes.
 
@@ -10,6 +12,13 @@ Once the nodes are up and configured you can point ODL at them (use the scripts 
 On subsequent launches you only need ./XRstart.sh.
 
 ### Key scripts are:
+
+**XRget.sh** gets the XR image from the repo.  Takes 2 parameters:
+
+1. CCO ID
+2. API key
+
+please see https://xrdocs.github.io/getting-started/steps-download-iosxr-vagrant (though here we get the .iso not the .box)
 
 **XRcopy.sh** copies the XR image once for each node (e.g. to xrvr-a.vmdk).
 
