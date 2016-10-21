@@ -12,4 +12,7 @@ then
 
 	# add features
 	sed -i '/^featuresBoot=/ s/$/,'$FEATURES'/' $DISTRO/etc/org.apache.karaf.features.cfg
+
+	# fix setenv
+	sed -i 's/2048m/4096m/' $DISTRO/bin/setenv
 fi
