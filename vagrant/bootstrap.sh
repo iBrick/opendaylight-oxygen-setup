@@ -1,13 +1,19 @@
 #!/usr/bin/env bash
 
+echo -e '\012' |  apt-add-repository ppa:webupd8team/java
 apt-get -qq update
-echo Y | apt-get -qq install git
-echo Y | apt-get -qq install zip 
-echo Y | apt-get -qq install openconnect
-echo Y | apt-get -qq install default-jre
-echo Y | apt-get -qq install mininet
-echo Y | apt-get -qq install python-pip
-echo pip install pyang
+echo "oracle-java8-installer shared/accepted-oracle-license-v1-1 select true" | debconf-set-selections
+apt-get -qq install oracle-java8-installer
+apt-get -qq install oracle-java8-set-default
+echo JAVA_HOME="/usr/lib/jvm/java-8-oracle" >> /etc/environment
+source /etc/environment
+apt-get -qq install git
+apt-get -qq install zip 
+apt-get -qq install openconnect
+apt-get -qq install default-jre
+apt-get -qq install mininet
+apt-get -qq install python-pip
+pip install pyang
 echo "cloning scripts"
 git clone -q https://github.com/CiscoDevNet/opendaylight-setup.git ODL
 cd ODL
@@ -16,8 +22,9 @@ cd images
 echo "downloading ODL distro"
 wget -q https://nexus.opendaylight.org/content/repositories/opendaylight.release/org/opendaylight/integration/distribution-karaf/0.5.0-Boron/distribution-karaf-0.5.0-Boron.tar.gz
 cd ..
-echo "unpacking ODL distro"
-./unpack-odl 
+echo "unpacking/configuring ODL distro"
+./unpack-odl
+./setup-odl
 cd ..
 chown -R vagrant:vagrant *
 echo "ready!"
