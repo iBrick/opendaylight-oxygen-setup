@@ -20,9 +20,9 @@ Installation Instructions:
 
 4.  Copy the appropriate OpenDaylight distribution file (.tar.gz) from https://www.opendaylight.org/downloads (or other location) to images:
 
-  Example: (Assumes you are downloading the "0.3.3-Lithium-SR3" release.)
+  Example: (Assumes you are downloading the "0.5.1-Boron-SR1" release.)
 
-  wget -P images https://nexus.opendaylight.org/content/groups/public/org/opendaylight/integration/distribution-karaf/0.3.3-Lithium-SR3/distribution-karaf-0.3.3-Lithium-SR3.tar.gz
+  wget -P images https://nexus.opendaylight.org/content/groups/public/org/opendaylight/integration/distribution-karaf/0.5.1-Boron-SR1/distribution-karaf-0.5.1-Boron-SR1.tar.gz
 
 5.  Under the "ODL" directory, edit the DISTRO variable in the "parameters" file to reflect the release you just downloaded into the "images" directory.
  
@@ -68,13 +68,13 @@ If you have Vagrant and VirtualBox or VMWare Workstation/Fusion installed you ca
 * Ubuntu 14.04
 * git
 * zip
-* openconnect
+* openconnect (required if using dCloud)
 * java (JRE only)
-* mininet
+* mininet (required if testing OpenFlow)
 * pip
 * pyang
 * this repository
-* OpenDaylight Beryllium SR1
+* OpenDaylight Boron SR1
 
 ODL will be unpacked.  So you can follow the instructions above from step 6.
 
