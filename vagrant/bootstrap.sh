@@ -3,14 +3,13 @@
 echo -e '\012' |  apt-add-repository ppa:webupd8team/java
 apt-get -qq update
 echo "oracle-java8-installer shared/accepted-oracle-license-v1-1 select true" | debconf-set-selections
-apt-get -qq install oracle-java8-installer
+apt-get -qq install oracle-java8-installer &>/dev/null
 apt-get -qq install oracle-java8-set-default
 echo JAVA_HOME="/usr/lib/jvm/java-8-oracle" >> /etc/environment
 source /etc/environment
 apt-get -qq install git
 apt-get -qq install zip 
 apt-get -qq install openconnect
-apt-get -qq install default-jre
 apt-get -qq install mininet
 apt-get -qq install python-pip
 pip install pyang
