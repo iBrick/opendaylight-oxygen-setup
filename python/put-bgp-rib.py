@@ -29,15 +29,7 @@ request_template = '''
         "type": "odl-bgp-rib-spi-cfg:extensions",
         "name": "global-rib-extensions"
       },
-      "odl-bgp-rib-impl-cfg:tcp-reconnect-strategy": {
-        "type": "protocol-framework:reconnect-strategy-factory",
-        "name": "example-reconnect-strategy-factory"
-      },
       "odl-bgp-rib-impl-cfg:rib-id": "example-bgp-rib",
-      "odl-bgp-rib-impl-cfg:session-reconnect-strategy": {
-        "type": "protocol-framework:reconnect-strategy-factory",
-        "name": "example-reconnect-strategy-factory"
-      },
       "odl-bgp-rib-impl-cfg:local-table": [
         {
           "type": "odl-bgp-rib-impl-cfg:bgp-table-type",
