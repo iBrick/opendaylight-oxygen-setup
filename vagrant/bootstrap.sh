@@ -22,9 +22,8 @@ cd images
 echo "downloading ODL distro"
 wget -q https://nexus.opendaylight.org/content/repositories/opendaylight.release/org/opendaylight/integration/distribution-karaf/0.5.1-Boron-SR1/distribution-karaf-0.5.1-Boron-SR1.tar.gz
 cd ..
-echo "unpacking/configuring ODL distro"
+echo "unpacking ODL distro"
 ./unpack-odl
-./setup-odl
 cd ..
 chown -R vagrant:vagrant *
 echo "ready!"
