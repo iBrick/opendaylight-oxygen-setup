@@ -20,9 +20,9 @@ Installation Instructions:
 
 4.  Copy the appropriate OpenDaylight distribution file (.tar.gz) from https://www.opendaylight.org/downloads (or other location) to images:
 
-  Example: (Assumes you are downloading the "0.5.1-Boron-SR1" release.)
+  Example: (Assumes you are downloading the "0.5.2-Boron-SR2" release.)
 
-  wget -P images https://nexus.opendaylight.org/content/groups/public/org/opendaylight/integration/distribution-karaf/0.5.1-Boron-SR1/distribution-karaf-0.5.1-Boron-SR1.tar.gz
+  wget -P images https://nexus.opendaylight.org/content/groups/public/org/opendaylight/integration/distribution-karaf/0.5.2-Boron-SR2/distribution-karaf-0.5.1-Boron-SR2.tar.gz
 
 5.  Under the "ODL" directory, edit the DISTRO variable in the "parameters" file to reflect the release you just downloaded into the "images" directory.
  
@@ -74,7 +74,7 @@ If you have Vagrant and VirtualBox or VMWare Workstation/Fusion installed you ca
 * pip
 * pyang
 * this repository
-* OpenDaylight Boron SR1
+* OpenDaylight Boron SR2
 
 ODL will be unpacked.  So you can follow the instructions above from step 6.
 
@@ -126,6 +126,8 @@ Note that the Vagrantfile is currently configured to allocate 2 vCPUs and 8GB of
 
 ### Python scripts are:
 
+**del-node.py** unmounts a node
+
 **put-node.py** mounts a node
 
 **is-node-connected.py** checks if a node is mounted
@@ -135,3 +137,7 @@ Note that the Vagrantfile is currently configured to allocate 2 vCPUs and 8GB of
 **put-app-rib.py** configures the ODL App RIB
 
 **put-bgp-peer.py** configures a BGP peer in ODL
+
+**put-bgp-neighbor.py** configures an XR router to peer with ODL
+
+**put-static-route.py** configure a static route on an XR router
