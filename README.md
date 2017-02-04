@@ -102,6 +102,8 @@ Note that the Vagrantfile is currently configured to allocate 2 vCPUs and 8GB of
 
 **delete-odl** deletes the ODL distribution
 
+**restart-odl** restarts ODL by calling other scripts
+
 ### Additional files are:
 
 **parameters** parameters - encoded as environment vars:
