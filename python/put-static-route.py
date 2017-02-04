@@ -24,8 +24,8 @@ request_template = '''
       "prefix": "%s",
       "prefix-length": %s,
       "vrf-route": {
-        "vrf-next-hops": {
-          "next-hop-address": [
+        "vrf-next-hop-table": {
+          "vrf-next-hop-next-hop-address": [
             {
               "next-hop-address": "%s"
             }
