@@ -126,6 +126,8 @@ Note that the Vagrantfile is currently configured to allocate 2 vCPUs and 8GB of
 
 **nodes** list of NETCONF nodes to mount (each line consists of a node name and node IP address)
 
+**nodes.16** / **parameters.16**  16-node setup for RTP dCloud 
+
 ### Python scripts are:
 
 **del-node.py** unmounts a node
