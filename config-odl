@@ -27,13 +27,13 @@ then
 		while true;
 		do
 			python python/is-node-connected.py $ip $name
-	  	if [ $? -eq 0 ]
-      then
-      	echo "NETCONF node $name up"
-        break
-      else
-      	sleep 2
-      fi
+	  		if [ $? -eq 0 ]
+      			then
+      				echo "NETCONF node $name up"
+        			break
+      			else
+      				sleep 2
+      			fi
 		done
 	done < nodes
 fi
@@ -61,7 +61,15 @@ then
 		python python/put-bgp-neighbor.py $ip $BGP_NODE $LOCAL_AS $REMOTE_AS
 
 		echo "adding static route to peer using NETCONF"
-		# python python/put-static-route.py $ip $BGP_NODE $ip 32 $BGP_NEXT_HOP 
+		python python/put-static-route.py $ip $BGP_NODE $ip 32 $BGP_NEXT_HOP 
+		
+		while read -r line
+		do
+			name=$(echo $line | cut -f2 -d" ")
+			echo $name 
+		
+			python python/put-pcep-peer.py $ip $name $ip
+		done < nodes
 	fi
 
 	# configure ODL to talk to BGP peer
