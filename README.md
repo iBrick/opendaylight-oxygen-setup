@@ -20,7 +20,7 @@ Installation Instructions:
 
 4.  Copy the appropriate OpenDaylight distribution file (.tar.gz) from https://www.opendaylight.org/downloads (or other location) to images:
 
-  Example: (Assumes you are downloading the "0.5.2-Boron-SR2" release.)
+  Example: (Assumes you are downloading the "0.5.3-Boron-SR3" release.)
 
   wget -P images https://nexus.opendaylight.org/content/groups/public/org/opendaylight/integration/distribution-karaf/0.5.3-Boron-SR3/distribution-karaf-0.5.3-Boron-SR3.tar.gz
 
