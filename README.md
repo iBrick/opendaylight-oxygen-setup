@@ -74,7 +74,7 @@ If you have Vagrant and VirtualBox or VMWare Workstation/Fusion installed you ca
 * pip
 * pyang
 * this repository
-* OpenDaylight Boron SR2
+* OpenDaylight Boron SR3
 
 ODL will be unpacked.  So you can follow the instructions above from step 6.
 
