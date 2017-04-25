@@ -15,4 +15,4 @@ NETCONF_PASS=cisco
 
 DCLOUD=YES
 
-FEATURES=odl-dlux-all,odl-restconf-all,odl-netconf-all,odl-bgpcep-bgp-all,odl-bgpcep-pcep-all,odl-netconf-connector-all
+FEATURES=odl-dlux-all,odl-restconf-all,odl-netconf-all,odl-netconf-topology,odl-bgpcep-bgp-all,odl-bgpcep-pcep-all,odl-netconf-connector-all
