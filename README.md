@@ -65,7 +65,7 @@ The repository also contains a subdirectory "vagrant" which contains a Vagrantfi
 
 If you have Vagrant and VirtualBox or VMWare Workstation/Fusion installed you can do a "vagrant up" from that directory and a VirtualBox VM will be created consisting of:
 
-* Ubuntu 14.04
+* Ubuntu 16.04
 * git
 * zip
 * openconnect (required if using dCloud)
