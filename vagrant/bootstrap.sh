@@ -19,7 +19,7 @@ cd ODL
 mkdir images
 cd images
 echo "downloading ODL distro"
-wget -q https://nexus.opendaylight.org/content/repositories/opendaylight.release/org/opendaylight/integration/distribution-karaf/0.5.3-Boron-SR3/distribution-karaf-0.5.3-Boron-SR3.tar.gz
+wget -q https://nexus.opendaylight.org/content/repositories/opendaylight.release/org/opendaylight/integration/distribution-karaf/0.5.4-Boron-SR4/distribution-karaf-0.5.4-Boron-SR4.tar.gz
 cd ..
 echo "unpacking ODL distro"
 ./unpack-odl
