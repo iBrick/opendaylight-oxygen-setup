@@ -68,7 +68,7 @@ then
 			name=$(echo $line | cut -f2 -d" ")
 			echo $name 
 		
-			python python/put-pcep-neighbor.py $ip $name $ip
+			python python/put-pcep-neighbor.py $ip $name 
 		done < nodes
 	fi
 

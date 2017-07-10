@@ -144,6 +144,6 @@ Note that the Vagrantfile is currently configured to allocate 2 vCPUs and 8GB of
 
 **put-bgp-neighbor.py** configures an XR router to peer with ODL
 
-**put-static-route.py** configure a static route on an XR router
+**put-pcep-neighbor.py** configures an XR router to act as a PCC towards ODL
 
-**put-pcep-peer** configures a PCEP peer on an XR router
+**put-static-route.py** configure a static route on an XR router
