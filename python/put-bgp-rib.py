@@ -15,50 +15,11 @@ import os
 import requests
 
 request_template = '''
-{ "module" :
-  [
-    {
-      "type": "odl-bgp-rib-impl-cfg:rib-impl",
-      "name": "example-bgp-rib",
-      "odl-bgp-rib-impl-cfg:bgp-rib-id": "%s",
-      "odl-bgp-rib-impl-cfg:bgp-dispatcher": {
-        "type": "odl-bgp-rib-impl-cfg:bgp-dispatcher",
-        "name": "global-bgp-dispatcher"
-      },
-      "odl-bgp-rib-impl-cfg:extensions": {
-        "type": "odl-bgp-rib-spi-cfg:extensions",
-        "name": "global-rib-extensions"
-      },
-      "odl-bgp-rib-impl-cfg:rib-id": "example-bgp-rib",
-      "odl-bgp-rib-impl-cfg:local-table": [
-        {
-          "type": "odl-bgp-rib-impl-cfg:bgp-table-type",
-          "name": "ipv4-unicast"
-        },
-        {
-          "type": "odl-bgp-rib-impl-cfg:bgp-table-type",
-          "name": "ipv6-unicast"
-        },
-        {
-          "type": "odl-bgp-rib-impl-cfg:bgp-table-type",
-          "name": "linkstate"
-        }
-      ],
-      "odl-bgp-rib-impl-cfg:data-provider": {
-        "type": "opendaylight-md-sal-binding:binding-async-data-broker",
-        "name": "pingpong-binding-data-broker"
-      },
-      "odl-bgp-rib-impl-cfg:dom-data-provider": {
-        "type": "opendaylight-md-sal-dom:dom-async-data-broker",
-        "name": "pingpong-broker"
-      },
-      "odl-bgp-rib-impl-cfg:codec-tree-factory": {
-        "type": "opendaylight-md-sal-binding:binding-codec-tree-factory",
-        "name": "runtime-mapping-singleton"
-      },
-      "odl-bgp-rib-impl-cfg:local-as": %s
+{
+    "bgp-openconfig-extensions:config": {
+        "as": %d,
+        "router-id": "%s"
     }
-  ]
 }
 '''
 
@@ -71,12 +32,15 @@ odl_user = os.environ.get('ODL_USER', 'admin')
 odl_pass = os.environ.get('ODL_PASS', 'admin')
 
 req_hdrs = {'Content-Type': 'application/json'}
-req_body = request_template % (sys.argv[1], sys.argv[2])
+req_body = request_template % (sys.argv[2], sys.argv[1])
 
 url = 'http://' + sys.argv[1] + ':8181' + \
-      '/restconf/config/network-topology:network-topology/topology' + \
-      '/topology-netconf/node/controller-config/yang-ext:mount' + \
-      '/config:modules/module/odl-bgp-rib-impl-cfg:rib-impl/example-bgp-rib'
+      '/restconf/config' + \
+      '/openconfig-network-instance:network-instances/' + \
+      '/network-instance/global-bgp' + \
+      '/protocols/protocol/openconfig-policy-types:BGP' + \
+      '/example-bgp-rib/bgp-openconfig-extensions:bgp' + \
+      '/global/config'
 
 resp = requests.put(url, data=req_body, headers=req_hdrs,
                     auth=(odl_user, odl_pass))

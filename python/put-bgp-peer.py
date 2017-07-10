@@ -18,40 +18,49 @@ import requests
 
 request_template = '''
 {
-  "module" : [
+  "bgp-openconfig-extensions:neighbor": [
     {
-      "type": "odl-bgp-rib-impl-cfg:bgp-peer",
-      "name": "example-bgp-peer",
-      "odl-bgp-rib-impl-cfg:host":"%s",
-      "odl-bgp-rib-impl-cfg:peer-role":"%s",
-      "odl-bgp-rib-impl-cfg:remote-as":"%s",
-      "odl-bgp-rib-impl-cfg:initiate-connection": true,
-      "odl-bgp-rib-impl-cfg:rib": {
-        "type": "odl-bgp-rib-impl-cfg:rib-instance",
-        "name": "example-bgp-rib"
-      },
-      "odl-bgp-rib-impl-cfg:peer-registry": {
-        "type": "odl-bgp-rib-impl-cfg:bgp-peer-registry",
-        "name": "global-bgp-peer-registry"
-      },
-      "odl-bgp-rib-impl-cfg:advertized-table": [
-        {
-          "type": "odl-bgp-rib-impl-cfg:bgp-table-type",
-          "name": "ipv6-unicast"
-        },
-        {
-          "type": "odl-bgp-rib-impl-cfg:bgp-table-type",
-          "name": "linkstate"
-        },
-        {
-          "type": "odl-bgp-rib-impl-cfg:bgp-table-type",
-          "name": "ipv4-unicast"
+      "neighbor-address": "%s",
+      "timers": {
+        "config": {
+          "connect-retry": 10,
+          "keepalive-interval": 30,
+          "hold-time": 180,
+          "minimum-advertisement-interval": 30
         }
-      ]
+      },
+      "afi-safis": {
+        "afi-safi": [
+          {
+            "afi-safi-name": "openconfig-bgp-types:IPV4-UNICAST"
+          },
+          {
+            "afi-safi-name": "bgp-openconfig-extensions:LINKSTATE"
+          }
+        ]
+      },
+      "route-reflector": {
+        "config": {
+          "route-reflector-client": false
+        }
+      },
+      "transport": {
+        "config": {
+          "remote-port": 179,
+          "mtu-discovery": false,
+          "passive-mode": false
+        }
+      },
+      "config": {
+        "send-community": "NONE",
+        "peer-as": %d,
+        "route-flap-damping": false,
+        "peer-type": "%s"
+      }
     }
   ]
 }
-'''
+
 # check args length
 if (len(sys.argv) != 5):
         print "usage %s ODL_IP_address Peer_IP_Address ODL_ASN Peer_ASN" % \
@@ -62,18 +71,21 @@ odl_user = os.environ.get('ODL_USER', 'admin')
 odl_pass = os.environ.get('ODL_PASS', 'admin')
 
 if (sys.argv[3] == sys.argv[4]):
-    bgp_mode = 'ibgp'
+    peer_type = 'INTERNAL'
 else:
-    bgp_mode = 'ebgp'
+    peer_type = 'EXTERNAL'
 
 req_hdrs = {'Content-Type': 'application/json'}
 
-req_body = request_template % (sys.argv[2], bgp_mode, sys.argv[4])
+req_body = request_template % (sys.argv[2], sys.argv[4], peer_type)
 
 url = 'http://' + sys.argv[1] + ':8181' + \
-      '/restconf/config/network-topology:network-topology/topology' + \
-      '/topology-netconf/node/controller-config/yang-ext:mount' + \
-      '/config:modules/module/odl-bgp-rib-impl-cfg:bgp-peer/example-bgp-peer'
+      '/restconf/config' + \
+      '/openconfig-network-instance:network-instances' + \
+      '/network-instance/global-bgp' + \
+      '/protocols/protocol/openconfig-policy-types:BGP' + \
+      '/example-bgp-rib/bgp-openconfig-extensions:bgp'+ \
+      '/neighbors/neighbor/' + sys.argv[2]
 
 resp = requests.put(url, data=req_body, headers=req_hdrs,
                     auth=(odl_user, odl_pass))
