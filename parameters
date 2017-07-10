@@ -1,4 +1,4 @@
-DISTRO=distribution-karaf-0.5.4-Boron-SR4
+DISTRO=distribution-karaf-0.6.0-Carbon
 
 ODL_USER=admin
 ODL_PASS=admin
@@ -15,4 +15,4 @@ NETCONF_PASS=cisco
 
 DCLOUD=YES
 
-FEATURES=odl-dlux-all,odl-restconf-all,odl-netconf-all,odl-netconf-mdsal,odl-netconf-topology,odl-bgpcep-bgp-all,odl-bgpcep-pcep-all,odl-netconf-connector-all
+FEATURES=odl-dlux-all,odl-restconf-all,odl-netconf-all,odl-netconf-mdsal,odl-netconf-topology,odl-bgpcep-bgp,odl-bgpcep-pcep,odl-netconf-connector-all
