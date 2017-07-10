@@ -55,7 +55,7 @@ then
 		echo $req
 		echo $req | curl -s -X POST http://198.18.133.1:8010/virl_client -H "Content-Type: application/json" -d @-
 		echo
-	elif [ $1 = "tun0" ];
+	else;
 	then
 		echo "configuring BGP peer using NETCONF"
 		python python/put-bgp-neighbor.py $ip $BGP_NODE $LOCAL_AS $REMOTE_AS
@@ -68,7 +68,7 @@ then
 			name=$(echo $line | cut -f2 -d" ")
 			echo $name 
 		
-			python python/put-pcep-peer.py $ip $name $ip
+			python python/put-pcep-neighbor.py $ip $name $ip
 		done < nodes
 	fi
 
