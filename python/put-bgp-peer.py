@@ -60,6 +60,7 @@ request_template = '''
     }
   ]
 }
+'''
 
 # check args length
 if (len(sys.argv) != 5):
@@ -77,7 +78,7 @@ else:
 
 req_hdrs = {'Content-Type': 'application/json'}
 
-req_body = request_template % (sys.argv[2], sys.argv[4], peer_type)
+req_body = request_template % (sys.argv[2], int(sys.argv[4]), peer_type)
 
 url = 'http://' + sys.argv[1] + ':8181' + \
       '/restconf/config' + \

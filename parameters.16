@@ -13,6 +13,4 @@ NETCONF_PORT=830
 NETCONF_USER=cisco
 NETCONF_PASS=cisco
 
-DCLOUD=YES
-
 FEATURES=odl-dlux-all,odl-restconf-all,odl-netconf-all,odl-bgpcep-bgp-all,odl-bgpcep-pcep-all,odl-netconf-connector-all

@@ -32,7 +32,7 @@ odl_user = os.environ.get('ODL_USER', 'admin')
 odl_pass = os.environ.get('ODL_PASS', 'admin')
 
 req_hdrs = {'Content-Type': 'application/json'}
-req_body = request_template % (sys.argv[2], sys.argv[1])
+req_body = request_template % (int(sys.argv[2]), sys.argv[1])
 
 url = 'http://' + sys.argv[1] + ':8181' + \
       '/restconf/config' + \

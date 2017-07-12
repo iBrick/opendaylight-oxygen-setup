@@ -25,10 +25,7 @@ odl_pass = os.environ.get('ODL_PASS', 'admin')
 # set up the URL
 url = 'http://' + sys.argv[1] + \
       ':8181/restconf/config/network-topology:network-topology' + \
-      '/topology/topology-netconf/node/controller-config' + \
-      '/yang-ext:mount/config:modules/module' + \
-      '/odl-sal-netconf-connector-cfg:sal-netconf-connector/' + \
-      sys.argv[2]
+      '/topology/topology-netconf/node/' + sys.argv[2]
 
 # Delete Node from ODL
 print requests.delete(url, auth=(odl_user, odl_pass))

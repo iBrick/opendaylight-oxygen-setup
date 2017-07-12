@@ -8,7 +8,13 @@ then
         exit 1
 fi
 
-ip=$(/sbin/ifconfig $1 | grep 'inet addr': | cut -d: -f2 | cut -d" " -f1)
+unamestr=$(uname)
+
+if [[ $unamestr == 'Darwin' ]]; then
+    ip=$(/sbin/ifconfig $1 | grep 'inet ' | cut -d" " -f2)
+elif [[ $unamestr == 'Linux' ]]; then
+    ip=$(/sbin/ifconfig $1 | grep 'inet addr': | cut -d: -f2 | cut -d" " -f1)
+fi
 
 echo $ip
 
@@ -42,36 +48,22 @@ awk -v features=$FEATURES 'BEGIN { exit index(features, "odl-bgpcep-bgp") }'
 if [ "$?" != "0" ];
 then
 	echo "configuring BGP"
+
 	# configure BGP RIB
 	python python/put-bgp-rib.py $ip $LOCAL_AS 
 
 	# configure app peer
 	python python/put-app-rib.py $ip 1.2.3.4
 
-	if [ $DCLOUD = "YES" ];
-	then
-		echo "configuring BGP peer using REST"
-		req='{"request": [{"option": "addBGP", "bgp_ip":"'$ip'"}]}'
-		echo $req
-		echo $req | curl -s -X POST http://198.18.133.1:8010/virl_client -H "Content-Type: application/json" -d @-
-		echo
-	else;
-	then
-		echo "configuring BGP peer using NETCONF"
-		python python/put-bgp-neighbor.py $ip $BGP_NODE $LOCAL_AS $REMOTE_AS
+	echo "configuring BGP peer using NETCONF"
+	python python/put-bgp-neighbor.py $ip $BGP_NODE $LOCAL_AS $REMOTE_AS
 
+	if [ $BGP_NEXT_HOP ];
+	then
 		echo "adding static route to peer using NETCONF"
 		python python/put-static-route.py $ip $BGP_NODE $ip 32 $BGP_NEXT_HOP 
-		
-		while read -r line
-		do
-			name=$(echo $line | cut -f2 -d" ")
-			echo $name 
-		
-			python python/put-pcep-neighbor.py $ip $name 
-		done < nodes
 	fi
-
+	
 	# configure ODL to talk to BGP peer
 	python python/put-bgp-peer.py $ip $BGP_PEER $LOCAL_AS $REMOTE_AS
 fi
@@ -79,12 +71,13 @@ fi
 awk -v features=$FEATURES 'BEGIN { exit index(features, "odl-bgpcep-pcep") }'
 if [ "$?" != "0" ];
 then
-	if [ $DCLOUD = "YES" ];
-	then
-		echo "configuring PCE-P"
-		req='{"request": [{"option": "addPCEP", "pcep_ip":"'$ip'"}]}'
-		echo $req
-		echo $req | curl -s -X POST http://198.18.133.1:8010/virl_client -H "Content-Type: application/json" -d @-
-		echo
-	fi
+	echo "configuring PCE-P"
+	
+	while read -r line
+	do
+		name=$(echo $line | cut -f2 -d" ")
+		echo $name 
+	
+		python python/put-pcep-neighbor.py $ip $name 
+	done < nodes
 fi
