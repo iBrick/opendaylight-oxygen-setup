@@ -36,7 +36,7 @@ req_body = request_template % (int(sys.argv[2]), sys.argv[1])
 
 url = 'http://' + sys.argv[1] + ':8181' + \
       '/restconf/config' + \
-      '/openconfig-network-instance:network-instances/' + \
+      '/openconfig-network-instance:network-instances' + \
       '/network-instance/global-bgp' + \
       '/protocols/protocol/openconfig-policy-types:BGP' + \
       '/example-bgp-rib/bgp-openconfig-extensions:bgp' + \
