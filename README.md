@@ -2,6 +2,7 @@
 This directory contains setup scripts for ODL.
 
 Start with a Linux host or VM with git and java installed (at a minimum - ideally mininet, openconnect, pip, pyang etc. too, depending on what features you plan to test).
+
 Installation Instructions:
 
 1.  Clone this repo:
@@ -18,38 +19,40 @@ Installation Instructions:
   * python
   * images
 
-4.  Copy the appropriate OpenDaylight distribution file (.tar.gz) from https://www.opendaylight.org/downloads (or other location) to images:
+3.  Copy the appropriate OpenDaylight distribution file (.tar.gz) from https://www.opendaylight.org/downloads (or other location) to images:
 
-  Example: (Assumes you are downloading the "0.5.4-Boron-SR4" release.)
+  Example: (Assumes you are downloading the "0.6.0-Carbon" release.)
 
-  wget -P images https://nexus.opendaylight.org/content/groups/public/org/opendaylight/integration/distribution-karaf/0.5.4-Boron-SR4/distribution-karaf-0.5.4-Boron-SR4.tar.gz
+  wget -P images https://nexus.opendaylight.org/content/groups/public/org/opendaylight/integration/distribution-karaf/0.6.0-Carbon/distribution-karaf-0.6.0-Carbon.tar.gz
 
-5.  Under the "ODL" directory, edit the DISTRO variable in the "parameters" file to reflect the release you just downloaded into the "images" directory.
+4.  Under the "ODL" directory, edit the DISTRO variable in the "parameters" file to reflect the release you just downloaded into the "images" directory.
  
-6. Unpack ODL using
+5. Unpack ODL using
 
 	./unpack-odl
 
-7.	If you are *not* using the dCloud infrastructure (http://dcloud.cisco.com) to experiment with ODL, edit the "nodes" file to reflect the list of nodes and their IP Addresses in your VIRL simulation.
+6.	If you are *not* using the dCloud infrastructure (http://dcloud.cisco.com) to experiment with ODL, edit the "nodes" file to reflect the list of nodes and their IP Addresses in your VIRL simulation.
 
-8. If you are *not* using dCloud and if you plan to use BGP, edit the parameters file to change the IP address of the BGP speaker.
+7. If you are *not* using dCloud and if you plan to use BGP, edit the parameters file to change the IP address of the BGP speaker.
 
-9.	Optionally edit the parameters file to change the set of features installed at ODL startup.
+8.	Optionally edit the parameters file to change the set of features installed at ODL startup.
 
-10.	Optionally edit the logs file to change the set of additional logging activated at ODL startup.
+9.	Optionally edit the logs file to change the set of additional logging activated at ODL startup.
  
-11. Set up ODL using (this loads key features and logging configs)
+10. Set up ODL using (this loads key features and logging configs)
 
   ./setup-odl
    
-12.	If you are using dCloud then set up the VPN using:
+11.	If you are using dCloud from Linux then set up the VPN using:
 
 	sudo ./start-vpn site username password
 	
-	* site is one of rtp, lon, sng or chi
+	* site is one of sjc, rtp, lon, sng or chi
 	* username and password can be found in your dCloud session details
 
 	(note that your unix account will need sudo privileges)
+	
+12. If using dCloud from a Mac then use the Cisco AnyConnect VPN client.   Set the host to https://dcloud-xxx-anyconnect.cisco.com and substitute sjc, rtp, lon, sng or chi for xxx. 
 
 13.	Start ODL using
 
@@ -74,11 +77,13 @@ If you have Vagrant and VirtualBox or VMWare Workstation/Fusion installed you ca
 * pip
 * pyang
 * this repository
-* OpenDaylight Boron SR4
+* OpenDaylight Carbon
 
 ODL will be unpacked.  So you can follow the instructions above from step 6.
 
 Note that the Vagrantfile is currently configured to allocate 2 vCPUs and 8GB of RAM to the VM.   If your machine only has 8GB of RAM then you may wish to allocate 4GB of RAM.  Likewise if you only have 2 CPU cores you may wish to allocate 1 vCPU.   Equally if you want to use a different hypervisor you will need to edit the Vagrantfile.
+
+The repository also contains a subdirectory "xrvr-5" with KVM scripts etc. for setting up a 5 node XRv lab.
 
 ### Scripts are:
 
@@ -88,7 +93,7 @@ Note that the Vagrantfile is currently configured to allocate 2 vCPUs and 8GB of
 
 **start-vpn** connects to dCloud VPN.  Takes 3 parameters:  
 
-* site (rtp/lon/sng/chi)
+* site (sjc/rtp/lon/sng/chi)
 * username
 * password
 
@@ -111,7 +116,7 @@ Note that the Vagrantfile is currently configured to allocate 2 vCPUs and 8GB of
 * DISTRO (name of ODL distribution)
 * BGP_PEER (IP address of BGP peer)
 * BGP_NODE (NETCONF name of BGP peer)
-* BGP\_NEXT_HOP (next-hop from BGP peer towards ODL)
+* BGP\_NEXT_HOP (next-hop from BGP peer towards ODL - only required if ODL is on a different subnet from the BGP peer)
 * LOCAL_AS
 * REMOTE_AS
 * ODL_USER
@@ -119,7 +124,6 @@ Note that the Vagrantfile is currently configured to allocate 2 vCPUs and 8GB of
 * NETCONF_PORT
 * NETCONF_USER
 * NETCONF_PASS
-* DCLOUD (YES or NO)
 * FEATURES (list of features to add to ODL's default set)
 
 **logs** extra logs to activate
@@ -144,6 +148,6 @@ Note that the Vagrantfile is currently configured to allocate 2 vCPUs and 8GB of
 
 **put-bgp-neighbor.py** configures an XR router to peer with ODL
 
-**put-pcep-neighbor.py** configures an XR router to act as a PCC towards ODL
+**put-pcep-client.py** configures an XR router to act as a PCC towards ODL
 
 **put-static-route.py** configure a static route on an XR router
