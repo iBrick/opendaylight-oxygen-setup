@@ -21,9 +21,9 @@ Installation Instructions:
 
 3.  Copy the appropriate OpenDaylight distribution file (.tar.gz) from https://www.opendaylight.org/downloads (or other location) to images:
 
-  Example: (Assumes you are downloading the "0.6.0-Carbon" release.)
+  Example: (Assumes you are downloading the "0.6.1-Carbon" release.)
 
-  wget -P images https://nexus.opendaylight.org/content/groups/public/org/opendaylight/integration/distribution-karaf/0.6.0-Carbon/distribution-karaf-0.6.0-Carbon.tar.gz
+  wget -P images https://nexus.opendaylight.org/content/groups/public/org/opendaylight/integration/distribution-karaf/0.6.1-Carbon/distribution-karaf-0.6.1-Carbon.tar.gz
 
 4.  Under the "ODL" directory, edit the DISTRO variable in the "parameters" file to reflect the release you just downloaded into the "images" directory.
  
