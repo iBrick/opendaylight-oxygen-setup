@@ -19,7 +19,9 @@ then
 	# add features
 	if [[ $unamestr == 'Darwin' ]]; then
 		sed -i '' '/^featuresBoot=/ s/$/,'$FEATURES'/' $DISTRO/etc/org.apache.karaf.features.cfg
+		sed -i '' '/wrap/ s/$/,'$FEATURES'/' $DISTRO/etc/org.apache.karaf.features.cfg
 	elif [[ $unamestr == 'Linux' ]]; then
-		sed -i '/^featuresBoot=/ s/$/,'$FEATURES'/' $DISTRO/etc/org.apache.karaf.features.cfg
+		sed -i '/^featuresBoot=/ s/$/,',$FEATURES'/' $DISTRO/etc/org.apache.karaf.features.cfg
+		sed -i '/wrap/ s/$/,'$FEATURES'/' $DISTRO/etc/org.apache.karaf.features.cfg
 	fi
 fi
