@@ -1,4 +1,3 @@
-
-log4j.logger.org.opendaylight.netconf = TRACE
-log4j.logger.org.opendaylight.protocol = TRACE
-log4j.logger.org.opendaylight.bgpcep = TRACE
+netconf
+protocol
+bgpcep

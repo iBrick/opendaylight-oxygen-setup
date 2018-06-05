@@ -4,24 +4,37 @@ source ./parameters
 unamestr=$(uname)
 mkdir -p $DISTRO/etc/opendaylight/karaf
 
-if grep -q "1MB" $DISTRO/etc/org.ops4j.pax.logging.cfg;
-then
+if [ -e "./setup-done" ]; then
+	echo "already configured"
+else
 	echo "configuring logging and features"
 
-	if [[ $unamestr == 'Darwin' ]]; then 
-		sed -i '' 's/1MB/10000MB/' $DISTRO/etc/org.ops4j.pax.logging.cfg
-	elif [[ $unamestr == 'Linux' ]]; then
-		sed -i 's/1MB/10000MB/' $DISTRO/etc/org.ops4j.pax.logging.cfg
+	if [ $VERSION == 'Oxygen' ]; then
+		awk '{ print "log4j2.logger."$0".name = org.opendaylight."$0; print "log4j2.logger."$0".level = TRACE" }' logs >> $DISTRO/etc/org.ops4j.pax.logging.cfg
+	else
+		if [ $unamestr == 'Darwin' ]; then 
+			sed -i '' 's/1MB/10000MB/' $DISTRO/etc/org.ops4j.pax.logging.cfg
+		elif [ $unamestr == 'Linux' ]; then
+			sed -i 's/1MB/10000MB/' $DISTRO/etc/org.ops4j.pax.logging.cfg
+		fi
+
+		awk '{ print "log4j.logger.org.opendaylight."$0" = TRACE" }' logs >> $DISTRO/etc/org.ops4j.pax.logging.cfg
 	fi
 
-	cat logs >> $DISTRO/etc/org.ops4j.pax.logging.cfg 	
+	if [ $unamestr == 'Darwin' ]; then
+		ep=\'\'
+	else
+		ep=''
+	fi	
 
 	# add features
-	if [[ $unamestr == 'Darwin' ]]; then
-		sed -i '' '/^featuresBoot=/ s/$/,'$FEATURES'/' $DISTRO/etc/org.apache.karaf.features.cfg
-		sed -i '' '/wrap/ s/$/,'$FEATURES'/' $DISTRO/etc/org.apache.karaf.features.cfg
-	elif [[ $unamestr == 'Linux' ]]; then
-		sed -i '/^featuresBoot=/ s/$/,',$FEATURES'/' $DISTRO/etc/org.apache.karaf.features.cfg
-		sed -i '/wrap/ s/$/,'$FEATURES'/' $DISTRO/etc/org.apache.karaf.features.cfg
-	fi
+	if [ $VERSION == 'Oxygen' ]; then
+		sed -i $ep '/^featuresBoot = / s/$/,'$FEATURES'/' $DISTRO/etc/org.apache.karaf.features.cfg
+	elif [ $VERSION == 'Nitrogen' ]; then
+		sed -i $ep '/wrap/ s/$/,'$FEATURES'/' $DISTRO/etc/org.apache.karaf.features.cfg
+	else
+		sed -i $ep '/^featuresBoot=/ s/$/,'$FEATURES'/' $DISTRO/etc/org.apache.karaf.features.cfg
+	fi	
+
+	touch "./setup-done"
 fi

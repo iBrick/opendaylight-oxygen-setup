@@ -16,17 +16,21 @@ unamestr=$(uname)
 
 while true;
 do
-	up=0
 	if [[ $unamestr == 'Darwin' ]]; then
-		up=$(netstat -an | grep 127.0.0.1.1830 | wc -l)
+		up=$(netstat -an | grep *.8181 | wc -l)
 	elif [[ $unamestr == 'Linux' ]]; then
-		up=$(netstat -an | grep 127.0.0.1:1830 | wc -l)
+		up=$(netstat -an | grep *:8181 | wc -l)
 	fi
 
-	if [ $up == 2 ]
+	if [ $up != 0 ]
 	then
-		echo "ODL is nearly ready"
-		break
+		if [ $VERSION == 'Oxygen' ]; then
+			echo "ODL is ready"
+			exit 0
+		else
+			echo "ODL is nearly ready"
+			break
+		fi
 	else
 		echo "ODL is starting"
 		sleep 5
@@ -45,4 +49,3 @@ do
 		sleep 5
 	fi
 done
-

@@ -21,11 +21,11 @@ Installation Instructions:
 
 3.  Copy the appropriate OpenDaylight distribution file (.tar.gz) from https://www.opendaylight.org/downloads (or other location) to images:
 
-  Example: (Assumes you are downloading the Nitrogen SR3 release.)
+  Example: (Assumes you are downloading the Oxygen-SR1 release.)
 
-  wget -P images https://nexus.opendaylight.org/content/groups/public/org/opendaylight/integration/karaf/0.7.3/karaf-0.7.3.tar.gz
+  wget -P images https://nexus.opendaylight.org/content/groups/public/org/opendaylight/integration/karaf/0.8.1/karaf-0.8.1.tar.gz
 
-4.  Under the "ODL" directory, edit the DISTRO variable in the "parameters" file to reflect the release you just downloaded into the "images" directory.
+4.  Under the "ODL" directory, edit the DISTRO and VERSION variables in the "parameters" file to reflect the release you just downloaded into the "images" directory.
  
 5. Unpack ODL using
 
@@ -77,7 +77,7 @@ If you have Vagrant and VirtualBox or VMWare Workstation/Fusion installed you ca
 * pip
 * pyang
 * this repository
-* OpenDaylight Nitrogen SR3
+* OpenDaylight Oxyten SR1
 
 ODL will be unpacked.  So you can follow the instructions above from step 6.
 
@@ -114,6 +114,7 @@ The repository also contains a subdirectory "xrvr-5" with KVM scripts etc. for s
 **parameters** parameters - encoded as environment vars:
 
 * DISTRO (name of ODL distribution)
+* VERSION (release of ODL - e.g. Oxygen)
 * BGP_PEER (IP address of BGP peer)
 * BGP_NODE (NETCONF name of BGP peer)
 * BGP\_NEXT_HOP (next-hop from BGP peer towards ODL - only required if ODL is on a different subnet from the BGP peer)
