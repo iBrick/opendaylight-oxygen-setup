@@ -16,13 +16,7 @@ unamestr=$(uname)
 
 while true;
 do
-	if [[ $unamestr == 'Darwin' ]]; then
-		up=$(netstat -an | grep *.8181 | wc -l)
-	elif [[ $unamestr == 'Linux' ]]; then
-		up=$(netstat -an | grep *:8181 | wc -l)
-	fi
-
-	if [ $up != 0 ]
+	if [ $(netstat -an | grep 8181 | grep LISTEN| wc -l) != 0 ]
 	then
 		if [ $VERSION == 'Oxygen' ]; then
 			echo "ODL is ready"

@@ -1,4 +1,6 @@
 #!/bin/bash
 source ./parameters
 rm -rf $DISTRO
-rm ./setup-done
+if [ -e ./setup-done ]; then 
+	rm ./setup-done
+fi
