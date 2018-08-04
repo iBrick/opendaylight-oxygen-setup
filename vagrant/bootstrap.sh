@@ -19,7 +19,7 @@ cd ODL
 mkdir images
 cd images
 echo "downloading ODL distro"
-wget -q https://nexus.opendaylight.org/content/repositories/opendaylight.release/org/opendaylight/integration/karaf/0.8.1/karaf-0.8.1.tar.gz
+wget -q https://nexus.opendaylight.org/content/repositories/opendaylight.release/org/opendaylight/integration/karaf/0.8.2/karaf-0.8.2.tar.gz
 cd ..
 echo "unpacking ODL distro"
 ./unpack-odl

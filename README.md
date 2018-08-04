@@ -21,9 +21,9 @@ Installation Instructions:
 
 3.  Copy the appropriate OpenDaylight distribution file (.tar.gz) from https://www.opendaylight.org/downloads (or other location) to images:
 
-  Example: (Assumes you are downloading the Oxygen-SR1 release.)
+  Example: (Assumes you are downloading the Oxygen-SR2 release.)
 
-  wget -P images https://nexus.opendaylight.org/content/groups/public/org/opendaylight/integration/karaf/0.8.1/karaf-0.8.1.tar.gz
+  wget -P images https://nexus.opendaylight.org/content/groups/public/org/opendaylight/integration/karaf/0.8.2/karaf-0.8.2.tar.gz
 
 4.  Under the "ODL" directory, edit the DISTRO and VERSION variables in the "parameters" file to reflect the release you just downloaded into the "images" directory.
  
@@ -77,7 +77,7 @@ If you have Vagrant and VirtualBox or VMWare Workstation/Fusion installed you ca
 * pip
 * pyang
 * this repository
-* OpenDaylight Oxyten SR1
+* OpenDaylight Oxyten SR2
 
 ODL will be unpacked.  So you can follow the instructions above from step 6.
 
