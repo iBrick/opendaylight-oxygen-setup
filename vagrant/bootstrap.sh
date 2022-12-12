@@ -14,7 +14,7 @@ apt-get -qq install mininet
 apt-get -qq install python-pip
 pip install pyang
 echo "cloning scripts"
-git clone -q https://github.com/CiscoDevNet/opendaylight-setup.git ODL
+git clone -q https://github.com/iBrick/opendaylight-oxygen-setup.git ODL
 cd ODL
 mkdir images
 cd images
